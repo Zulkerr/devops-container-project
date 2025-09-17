@@ -1,0 +1,33 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install Dependencies
+      run: npm install
+      
+    - name: Build Docker Image
+      run: docker build -t smmazuli/devops-app:latest .
+      
+    - name: Test Docker Container
+      run: |
+        docker run -d -p 3000:3000 --name test-container smmazuli/devops-app:latest
+        sleep 10
+        curl -f http://localhost:3000 || exit 1
+        docker stop test-container
