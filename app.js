@@ -5,8 +5,8 @@ const port = 3000;
 app.get('/', (req, res) => {
   res.send(`
     <h1>Meine DevOps Container App</h1>
-    <p>Version: 1.0.0</p>
-    <p>Diese App läuft in einem Docker Container!</p>
+    <p>Version: 1.1.0</p>
+    <p>Diese App läuft in einem Docker Container! 🎉 DevOps rocks!</p>
   `);
 });
 
