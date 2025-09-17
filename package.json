@@ -1,0 +1,12 @@
+{
+  "name": "devops-container-app",
+  "version": "1.0.0",
+  "description": "Eine einfache Web-App für DevOps-Learning",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
